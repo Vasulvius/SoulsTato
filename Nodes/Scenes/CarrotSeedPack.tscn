@@ -22,6 +22,7 @@ animations = [{
 radius = 5.0
 
 [node name="CarrotSeedPack" type="StaticBody2D" node_paths=PackedStringArray("animatedSprite2D")]
+z_index = 10
 script = ExtResource("1_1mjcu")
 animatedSprite2D = NodePath("AnimatedSprite2D")
 
@@ -29,7 +30,6 @@ animatedSprite2D = NodePath("AnimatedSprite2D")
 sprite_frames = SubResource("SpriteFrames_oeth7")
 
 [node name="Area2D" type="Area2D" parent="."]
-z_index = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_6pn4p")

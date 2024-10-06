@@ -186,8 +186,29 @@ tile_set = SubResource("TileSet_8aw8y")
 
 [node name="Player" parent="." instance=ExtResource("1_v3uwp")]
 
+[node name="CarrotSeedPack" parent="." instance=ExtResource("3_lkauf")]
+position = Vector2(32, 32)
+
 [node name="GrowingZone" parent="." instance=ExtResource("4_tdy5e")]
 position = Vector2(104, 72)
 
-[node name="CarrotSeedPack" parent="." instance=ExtResource("3_lkauf")]
-position = Vector2(32, 32)
+[node name="GrowingZone2" parent="." instance=ExtResource("4_tdy5e")]
+position = Vector2(120, 72)
+
+[node name="GrowingZone3" parent="." instance=ExtResource("4_tdy5e")]
+position = Vector2(136, 72)
+
+[node name="GrowingZone4" parent="." instance=ExtResource("4_tdy5e")]
+position = Vector2(152, 72)
+
+[node name="GrowingZone5" parent="." instance=ExtResource("4_tdy5e")]
+position = Vector2(104, 88)
+
+[node name="GrowingZone6" parent="." instance=ExtResource("4_tdy5e")]
+position = Vector2(120, 88)
+
+[node name="GrowingZone7" parent="." instance=ExtResource("4_tdy5e")]
+position = Vector2(136, 88)
+
+[node name="GrowingZone8" parent="." instance=ExtResource("4_tdy5e")]
+position = Vector2(152, 88)

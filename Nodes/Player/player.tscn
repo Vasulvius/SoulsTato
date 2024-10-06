@@ -101,11 +101,11 @@ radius = 5.0
 height = 14.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite2D")]
+z_index = 5
 script = ExtResource("1_kwein")
 animatedSprite2D = NodePath("AnimatedSprite2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-z_index = 5
 zoom = Vector2(4, 4)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

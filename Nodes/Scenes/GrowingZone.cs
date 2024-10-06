@@ -58,4 +58,26 @@ public partial class GrowingZone : StaticBody2D
 			plantGrown = true;
 		}
 	}
+
+	private void OnArea2dInputEvent(Node viewport, InputEvent ev, int shape_idx)
+	{
+		if(Input.IsActionJustPressed("click"))
+		{
+			if(plantGrown)
+			{
+				if(plant == 1)
+				{
+					Global.Instance.numOfCarrots ++;
+				}
+				if(plant == 2)
+				{
+					Global.Instance.numOfOnions ++;
+				}
+				plantGrowing = false;
+				plantGrown = false;
+				animatedSpritePlant.Play("none");
+				GD.Print("Number of carrots : " + Global.Instance.numOfCarrots);
+			}
+		}
+	}
 }

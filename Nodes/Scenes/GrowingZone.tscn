@@ -114,4 +114,5 @@ wait_time = 5.0
 wait_time = 5.0
 
 [connection signal="area_entered" from="Area2D" to="." method="OnArea2dEntered"]
+[connection signal="input_event" from="Area2D" to="." method="OnArea2dInputEvent"]
 [connection signal="timeout" from="CarrotGrowTimer" to="." method="CarrotTimerTimout"]
