@@ -29,6 +29,7 @@ animatedSprite2D = NodePath("AnimatedSprite2D")
 sprite_frames = SubResource("SpriteFrames_oeth7")
 
 [node name="Area2D" type="Area2D" parent="."]
+z_index = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_6pn4p")

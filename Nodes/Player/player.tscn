@@ -105,6 +105,7 @@ script = ExtResource("1_kwein")
 animatedSprite2D = NodePath("AnimatedSprite2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+z_index = 5
 zoom = Vector2(4, 4)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
