@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://d3ird8i20r32e"]
+[gd_scene load_steps=6 format=4 uid="uid://d3ird8i20r32e"]
 
 [ext_resource type="PackedScene" uid="uid://hq8pdflwp5tq" path="res://Nodes/Player/player.tscn" id="1_v3uwp"]
 [ext_resource type="Texture2D" uid="uid://q7fykkra0ko8" path="res://Assets/Tiles/farmingTilesheetComplete.png" id="2_3ef18"]
-[ext_resource type="PackedScene" uid="uid://lmvxhcagbnle" path="res://Nodes/Scenes/CarrotSeedPack.tscn" id="3_lkauf"]
 [ext_resource type="PackedScene" uid="uid://bvbish6pce4m4" path="res://Nodes/Scenes/GrowingZone.tscn" id="4_tdy5e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ghsxg"]
@@ -185,9 +184,6 @@ tile_map_data = PackedByteArray("AAAIAP3/AAABAAwAAAAHAPz/AAAAAAsAAAAHAP3/AAAAAAw
 tile_set = SubResource("TileSet_8aw8y")
 
 [node name="Player" parent="." instance=ExtResource("1_v3uwp")]
-
-[node name="CarrotSeedPack" parent="." instance=ExtResource("3_lkauf")]
-position = Vector2(32, 32)
 
 [node name="GrowingZone" parent="." instance=ExtResource("4_tdy5e")]
 position = Vector2(104, 72)
