@@ -31,6 +31,7 @@ texture = ExtResource("1_ql65e")
 12:1/0 = 0
 13:1/0 = 0
 14:1/0 = 0
+14:1/0/custom_data_2 = true
 0:2/0 = 0
 0:2/0/terrain_set = 1
 0:2/0/terrain = 0
@@ -897,6 +898,9 @@ texture = ExtResource("1_ql65e")
 9:21/0 = 0
 10:21/0 = 0
 11:21/0 = 0
+14:0/0 = 0
+14:0/0/custom_data_0 = true
+14:0/0/custom_data_1 = true
 
 [resource]
 terrain_set_0/mode = 0
@@ -909,4 +913,6 @@ custom_data_layer_0/name = "canPlaceSeeds"
 custom_data_layer_0/type = 1
 custom_data_layer_1/name = "canPlaceDirt"
 custom_data_layer_1/type = 1
+custom_data_layer_2/name = "canHarvest"
+custom_data_layer_2/type = 1
 sources/0 = SubResource("TileSetAtlasSource_oiwsp")
