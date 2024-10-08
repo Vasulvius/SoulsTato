@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://d3ird8i20r32e"]
+[gd_scene load_steps=3 format=4 uid="uid://d3ird8i20r32e"]
 
 [ext_resource type="PackedScene" uid="uid://hq8pdflwp5tq" path="res://Nodes/Player/player.tscn" id="1_v3uwp"]
 [ext_resource type="TileSet" uid="uid://cjyplg6vn4rl7" path="res://Assets/Tiles/TileSet.tres" id="2_01u2e"]
-[ext_resource type="PackedScene" uid="uid://bvbish6pce4m4" path="res://Nodes/Scenes/GrowingZone.tscn" id="4_tdy5e"]
 
 [node name="World" type="Node"]
 
@@ -20,27 +19,3 @@ tile_set = ExtResource("2_01u2e")
 tile_set = ExtResource("2_01u2e")
 
 [node name="Player" parent="." instance=ExtResource("1_v3uwp")]
-
-[node name="GrowingZone" parent="." instance=ExtResource("4_tdy5e")]
-position = Vector2(104, 72)
-
-[node name="GrowingZone2" parent="." instance=ExtResource("4_tdy5e")]
-position = Vector2(120, 72)
-
-[node name="GrowingZone3" parent="." instance=ExtResource("4_tdy5e")]
-position = Vector2(136, 72)
-
-[node name="GrowingZone4" parent="." instance=ExtResource("4_tdy5e")]
-position = Vector2(152, 72)
-
-[node name="GrowingZone5" parent="." instance=ExtResource("4_tdy5e")]
-position = Vector2(104, 88)
-
-[node name="GrowingZone6" parent="." instance=ExtResource("4_tdy5e")]
-position = Vector2(120, 88)
-
-[node name="GrowingZone7" parent="." instance=ExtResource("4_tdy5e")]
-position = Vector2(136, 88)
-
-[node name="GrowingZone8" parent="." instance=ExtResource("4_tdy5e")]
-position = Vector2(152, 88)

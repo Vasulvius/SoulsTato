@@ -4,19 +4,28 @@ using System.Linq;
 
 public partial class MapManager : Node2D
 {
+	// Singleton vars
 	public static MapManager Instance { get; private set; }
+
+	// Global states
+	private bool canPlaceSeed = false;
+	private bool canPlaceDirt = false;
+
+	// Tile map management vars
 	private TileMapLayer groundLayer;
 	private TileMapLayer terraformableLayer;
 	private TileMapLayer cultureLayer;
-	private const int SOURCE_ID = 0;
-	private Vector2I SEED_TILE = new Vector2I(11, 1);
 	private const string CAN_PLACE_SEEDS_PROP_NAME = "canPlaceSeeds";
 	private const string CAN_PLACE_DIRT_PROP_NAME = "canPlaceDirt";
-	private bool canPlaceSeed = false;
-	private bool canPlaceDirt = false;
-	private Godot.Collections.Array<Vector2I> dirtTiles = new Godot.Collections.Array<Vector2I>{};
+	private const int SOURCE_ID = 0;
 	private const int DIRT_TERRAIN_SET = 1;
 	private const int DIRT_TERRAIN = 0;
+	private Godot.Collections.Array<Vector2I> dirtTiles = new Godot.Collections.Array<Vector2I>{};
+	
+	// Growth vars
+	private const float GROWTH_TIME = 3f;
+	private Vector2I SEED_TILE = new Vector2I(11, 1);
+
 	public override void _Ready()
 	{
 		// Create this as a singleton
@@ -29,14 +38,12 @@ public partial class MapManager : Node2D
 		cultureLayer = (TileMapLayer)GetTree().GetNodesInGroup("Culture")[0];
 	}
 
-	public override void _Process(double delta)
-	{
-	}
-
 	private void _input(InputEvent ev)
 	{
 		if(Input.IsActionJustPressed("click"))
 		{
+			// On click plant a seed if I can
+
 			// Get mouse position in tile map local coordonate
 			Vector2I localMousePosition = terraformableLayer.LocalToMap(GetGlobalMousePosition());
 			// Get the tile data of the terraformable layer
@@ -61,6 +68,8 @@ public partial class MapManager : Node2D
 		}
 		if(Input.IsActionJustPressed("right_click"))
 		{
+			// On right_click place dirt in I can
+
 			// Get mouse position in tile map local coordonate
 			Vector2I localMousePosition = terraformableLayer.LocalToMap(GetGlobalMousePosition());
 			// Get the tile data of the ground layer
@@ -83,7 +92,6 @@ public partial class MapManager : Node2D
 				canPlaceDirt = false;
 			}
 
-
 			if(canPlaceDirt)
 			{
 				// Place dirt
@@ -97,9 +105,9 @@ public partial class MapManager : Node2D
 	private async void HandleSeed(Vector2I localMousePosition, int level, Vector2I atlasCoord, int finalSeedLevel)
 	{
 		// Manage the growth
-		cultureLayer.SetCell(localMousePosition, SOURCE_ID, atlasCoord);
 
-		await ToSignal(GetTree().CreateTimer(3f), "timeout");
+		cultureLayer.SetCell(localMousePosition, SOURCE_ID, atlasCoord);
+		await ToSignal(GetTree().CreateTimer(GROWTH_TIME), "timeout");
 
 		if(level == finalSeedLevel)
 		{
