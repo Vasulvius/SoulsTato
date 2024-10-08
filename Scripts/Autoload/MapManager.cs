@@ -56,6 +56,7 @@ public partial class MapManager : Node2D
 			{
 				// Plant a seed in the culture tile map layer
 				cultureLayer.SetCell(localMousePosition, SOURCE_ID, SEED_TILE);
+				HandleSeed(localMousePosition, 0, SEED_TILE, 3);
 			}
 		}
 		if(Input.IsActionJustPressed("right_click"))
@@ -91,5 +92,24 @@ public partial class MapManager : Node2D
 			}
 
 		}
+	}
+
+	private async void HandleSeed(Vector2I localMousePosition, int level, Vector2I atlasCoord, int finalSeedLevel)
+	{
+		// Manage the growth
+		cultureLayer.SetCell(localMousePosition, SOURCE_ID, atlasCoord);
+
+		await ToSignal(GetTree().CreateTimer(3f), "timeout");
+
+		if(level == finalSeedLevel)
+		{
+			// Just do nothing
+		}
+		else
+		{
+			Vector2I newAtlas = new Vector2I(atlasCoord.X+1, atlasCoord.Y);
+			HandleSeed(localMousePosition, level+1, newAtlas, finalSeedLevel);
+		}
+
 	}
 }
