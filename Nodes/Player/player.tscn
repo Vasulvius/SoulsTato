@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://hq8pdflwp5tq"]
+[gd_scene load_steps=17 format=3 uid="uid://hq8pdflwp5tq"]
 
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="1_kwein"]
 [ext_resource type="Texture2D" uid="uid://q7fykkra0ko8" path="res://Assets/Tiles/farmingTilesheetComplete.png" id="1_v7xvf"]
@@ -18,6 +18,14 @@ region = Rect2(32, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pao6k"]
 atlas = ExtResource("1_v7xvf")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr1h7"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5384"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l0u0b"]
 atlas = ExtResource("1_v7xvf")
@@ -69,6 +77,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_pr1h7")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5384")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_l0u0b")
 }, {
 "duration": 1.0,
@@ -110,7 +134,7 @@ zoom = Vector2(4, 4)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_w7wl3")
-animation = &"idle"
+animation = &"idle_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_8u3us")

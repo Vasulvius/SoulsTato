@@ -5,6 +5,8 @@ public partial class Player : CharacterBody2D
 {
 	[Export] private float speed = 100.0f;
 	[Export] private AnimatedSprite2D animatedSprite2D;
+	public enum lookingDirection {Up, Down, Left, Right};
+	public lookingDirection actualLookingDirection = lookingDirection.Down;
 
     public override void _PhysicsProcess(double delta)
 	{
@@ -20,7 +22,7 @@ public partial class Player : CharacterBody2D
 		}
 		else
 		{
-			animatedSprite2D.Play("idle");
+			Idle();
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, speed);
 			velocity.Y = Mathf.MoveToward(Velocity.Y, 0, speed);
 		}
@@ -35,23 +37,49 @@ public partial class Player : CharacterBody2D
 		{
 			// down
 			animatedSprite2D.Play("down_walk");
+			actualLookingDirection = lookingDirection.Down;
 		}
 		else if (direction == new Vector2(0, -1))
 		{
 			// up
 			animatedSprite2D.Play("up_walk");
+			actualLookingDirection = lookingDirection.Up;
 		}
 		else if (direction == new Vector2(-1, 0))
 		{
 			// left
 			animatedSprite2D.Play("side_walk");
 			animatedSprite2D.FlipH = false;
+			actualLookingDirection = lookingDirection.Left;
 		}
 		else if (direction == new Vector2(1, 0))
 		{
 			// right
 			animatedSprite2D.Play("side_walk");
 			animatedSprite2D.FlipH = true;
+			actualLookingDirection = lookingDirection.Right;
+		}
+	}
+
+	private void Idle()
+	{
+		if(actualLookingDirection == lookingDirection.Up)
+		{
+			animatedSprite2D.Play("idle_up");
+		}
+		else if(actualLookingDirection == lookingDirection.Down)
+		{
+			animatedSprite2D.Play("idle");
+		}
+		else if(actualLookingDirection == lookingDirection.Left)
+		{
+			animatedSprite2D.FlipH = false;
+			animatedSprite2D.Play("idle_left");
+		}
+		else if(actualLookingDirection == lookingDirection.Right)
+		{
+			animatedSprite2D.FlipH = true;
+			animatedSprite2D.Play("idle_left");
 		}
 	}
 }

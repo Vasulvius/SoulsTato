@@ -43,7 +43,7 @@ public partial class MapManager : Node2D
 
 	private void _input(InputEvent ev)
 	{
-		if(Input.IsActionJustPressed("click"))
+		if(Input.IsActionJustPressed("PlantAndHarvest"))
 		{
 			// On click plant a seed if I can
 
@@ -82,13 +82,13 @@ public partial class MapManager : Node2D
 			if(canHarvest)
 			{
 				// Remove tile
-				// cultureLayer.EraseCell(localMousePosition);
+				// Better than cultureLayer.EraseCell()
 				cultureLayer.SetCell(localMousePosition, SOURCE_ID, EMPTY_TILE);
 				Global.Instance.numOfRedPotatoe ++;
 				GD.Print("Number of red potatoes = ", Global.Instance.numOfRedPotatoe);
 			}
 		}
-		if(Input.IsActionJustPressed("right_click"))
+		if(Input.IsActionJustPressed("UseHue"))
 		{
 			// On right_click place dirt in I can
 
