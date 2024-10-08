@@ -14,11 +14,13 @@ public partial class MapManager : Node2D
 	private bool canPlaceSeed = false;
 	private bool canPlaceDirt = false;
 	private bool canHarvest = false;
+	private bool highlightScene = false;
 
 	// Tile map management vars
 	private TileMapLayer groundLayer;
 	private TileMapLayer terraformableLayer;
 	private TileMapLayer cultureLayer;
+	private TileMapLayer highlightLayer;
 	private const string CAN_PLACE_SEEDS_PROP_NAME = "canPlaceSeeds";
 	private const string CAN_PLACE_DIRT_PROP_NAME = "canPlaceDirt";
 	private const string CAN_PLACE_HARVEST_PROP_NAME = "canHarvest";
@@ -27,6 +29,7 @@ public partial class MapManager : Node2D
 	private const int DIRT_TERRAIN = 0;
 	private Godot.Collections.Array<Vector2I> dirtTiles = new Godot.Collections.Array<Vector2I>{};
 	private Vector2I EMPTY_TILE = new Vector2I(14, 0);
+	private Vector2I HIGHTLIGHT_TILE = new Vector2I(11, 0);
 
 	// Growth vars
 	private const float GROWTH_TIME = 3f;
@@ -42,6 +45,8 @@ public partial class MapManager : Node2D
 		terraformableLayer = (TileMapLayer)GetTree().GetNodesInGroup("Terraformable")[0];
 		// Go search for the layer to plant seeds
 		cultureLayer = (TileMapLayer)GetTree().GetNodesInGroup("Culture")[0];
+		// Go search for the layer to disply highlighting
+		highlightLayer = (TileMapLayer)GetTree().GetNodesInGroup("HighLight")[0];
 		// Go search for the player
 		var playerArray = GetTree().GetNodesInGroup("Player");
 		if(playerArray.Count() > 0)
@@ -51,6 +56,11 @@ public partial class MapManager : Node2D
 		}
 	}
 
+	public override void _Process(double delta)
+	{
+		HighLight();
+	}
+
 	private void _input(InputEvent ev)
 	{
 		// Get mouse position in tile map local coordonate
@@ -58,6 +68,10 @@ public partial class MapManager : Node2D
 		Vector2I playerPosition = groundLayer.LocalToMap(player.GlobalPosition);
 		Vector2I tilePosition = LookedTilePostion(playerPosition);
 
+		if(Input.IsActionJustPressed("Select"))
+		{
+			highlightScene = !highlightScene;
+		}
 		if(Input.IsActionJustPressed("PlantAndHarvest"))
 		{
 			bool plantedOnPlayer = Plant(playerPosition);
@@ -81,6 +95,23 @@ public partial class MapManager : Node2D
 				UseHue(tilePosition);
 			}
 		}
+	}
+
+	private void HighLight()
+	{
+		if(highlightScene)
+		{
+		Vector2I playerPosition = groundLayer.LocalToMap(player.GlobalPosition);
+		Vector2I tilePosition = LookedTilePostion(playerPosition);
+		highlightLayer.Clear();
+		highlightLayer.SetCell(playerPosition, SOURCE_ID, HIGHTLIGHT_TILE);
+		highlightLayer.SetCell(tilePosition, SOURCE_ID, HIGHTLIGHT_TILE);
+		}
+		else
+		{
+			highlightLayer.Clear();
+		}
+		
 	}
 
 	private async void HandleSeed(Vector2I tilePosition, int level, Vector2I atlasCoord, int finalSeedLevel)

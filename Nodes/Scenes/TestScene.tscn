@@ -18,4 +18,8 @@ tile_set = ExtResource("2_01u2e")
 [node name="Culture" type="TileMapLayer" parent="TileMapLayers" groups=["Culture"]]
 tile_set = ExtResource("2_01u2e")
 
+[node name="Hightlight" type="TileMapLayer" parent="TileMapLayers" groups=["HighLight"]]
+tile_map_data = PackedByteArray("AAD7/wEAAAAOAAAAAAD8/wEAAAAOAAAAAAD6/wIAAAAOAAAAAAD9/wMAAAAOAAAAAAA=")
+tile_set = ExtResource("2_01u2e")
+
 [node name="Player" parent="." instance=ExtResource("1_v3uwp")]
