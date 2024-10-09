@@ -11,6 +11,7 @@ public partial class MapManager : Node2D
 	private Player player;
 	private Vector2I playerPosition;
 	private Vector2I tilePosition;
+	private const float OFFSET_HEIGHT_FACTOR = 0.3f;
 
 	// Global states
 	private bool canPlaceSeed = false;
@@ -60,8 +61,7 @@ public partial class MapManager : Node2D
 
 	public override void _Process(double delta)
 	{
-		Vector2 globalPlayerPosOffset = new Vector2(player.GlobalPosition.X, player.GlobalPosition.Y + player.playerHeight*0.3f);
-		// playerPosition = groundLayer.LocalToMap(player.GlobalPosition);
+		Vector2 globalPlayerPosOffset = new Vector2(player.GlobalPosition.X, player.GlobalPosition.Y + player.playerHeight*OFFSET_HEIGHT_FACTOR);
 		playerPosition = groundLayer.LocalToMap(globalPlayerPosOffset);
 		tilePosition = LookedTilePostion(playerPosition);
 		HighLight();
@@ -69,43 +69,18 @@ public partial class MapManager : Node2D
 
 	private void _input(InputEvent ev)
 	{
-		// Get mouse position in tile map local coordonate
-		// Vector2I tilePosition = terraformableLayer.LocalToMap(GetGlobalMousePosition());
-		// Vector2I playerPosition = groundLayer.LocalToMap(player.GlobalPosition);
-		// Vector2I tilePosition = LookedTilePostion(playerPosition);
-
 		if(Input.IsActionJustPressed("Select"))
 		{
 			highlightScene = !highlightScene;
 		}
 		if(Input.IsActionJustPressed("PlantAndHarvest"))
 		{
-			// // Do something on the player tile or the one that you look at
-			// bool plantedOnPlayer = Plant(playerPosition);
-			// bool plantedBesidePlayer = false;
-			// if(!plantedOnPlayer)
-			// {
-			// 	plantedBesidePlayer = Plant(tilePosition);
-			// }
-			// bool harvestOnPlayer = Harvest(playerPosition);
-			// if(!harvestOnPlayer && !plantedOnPlayer && !plantedBesidePlayer)
-			// {
-			// 	Harvest(tilePosition);
-			// }
-
 			// Do something only on the player tile
 			Plant(playerPosition);
 			Harvest(playerPosition);
 		}
 		if(Input.IsActionJustPressed("UseHue"))
 		{
-			// // Do something on the player tile or the one that you look at
-			// bool hueOnPlayer = UseHue(playerPosition);
-			// if(!hueOnPlayer)
-			// {
-			// 	UseHue(tilePosition);
-			// }
-
 			// Do something only on the player tile
 			UseHue(playerPosition);
 		}
@@ -115,11 +90,8 @@ public partial class MapManager : Node2D
 	{
 		if(highlightScene)
 		{
-		// Vector2I playerPosition = groundLayer.LocalToMap(player.GlobalPosition);
-		// Vector2I tilePosition = LookedTilePostion(playerPosition);
 		highlightLayer.Clear();
 		highlightLayer.SetCell(playerPosition, SOURCE_ID, HIGHTLIGHT_TILE);
-		// highlightLayer.SetCell(tilePosition, SOURCE_ID, HIGHTLIGHT_TILE);
 		}
 		else
 		{
