@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://hq8pdflwp5tq"]
 
-[ext_resource type="Script" path="res://Scripts/Player.cs" id="1_kwein"]
+[ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_kwein"]
 [ext_resource type="Texture2D" uid="uid://q7fykkra0ko8" path="res://Assets/Tiles/farmingTilesheetComplete.png" id="1_v7xvf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhc43"]

@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://Scripts/Autoload/Global.cs"
-MapManager="*res://Scripts/Autoload/MapManager.cs"
 
 [dotnet]
 

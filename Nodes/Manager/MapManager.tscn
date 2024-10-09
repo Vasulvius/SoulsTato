@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtgdj68sf54dk"]
+
+[ext_resource type="Script" path="res://Scripts/Manager/MapManager.cs" id="1_ijufb"]
+
+[node name="MapManager" type="Node2D"]
+script = ExtResource("1_ijufb")
