@@ -6,6 +6,9 @@ public partial class Global : Node
 	// Singleton vars
 	public static Global Instance { get; private set; }
 
+	// Player vars
+	public int itemEquipedIndex;
+
 	// Ressources vars
 	public int plantSelected = 1; // 1 for carrot, 2 for lettuce
 	public int numOfCarrots = 0;

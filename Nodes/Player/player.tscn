@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://hq8pdflwp5tq"]
+[gd_scene load_steps=18 format=3 uid="uid://hq8pdflwp5tq"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_kwein"]
 [ext_resource type="Texture2D" uid="uid://q7fykkra0ko8" path="res://Assets/Tiles/farmingTilesheetComplete.png" id="1_v7xvf"]
+[ext_resource type="PackedScene" uid="uid://deismtgkqnkt1" path="res://Nodes/UI/UI.tscn" id="2_l4lsj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ifm5f"]
 atlas = ExtResource("1_v7xvf")
@@ -129,6 +130,8 @@ z_index = 5
 position = Vector2(0, -6)
 script = ExtResource("1_kwein")
 animatedSprite2D = NodePath("AnimatedSprite2D")
+
+[node name="UI" parent="." instance=ExtResource("2_l4lsj")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)

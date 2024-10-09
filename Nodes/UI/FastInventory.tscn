@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://h1bsynvm7dw5"]
+
+[ext_resource type="Script" path="res://Scripts/UI/FastInventory.cs" id="1_blwcd"]
+[ext_resource type="Texture2D" uid="uid://c3ycj53wmcblf" path="res://Assets/Sprites/Hand.png" id="1_ggjm8"]
+[ext_resource type="Texture2D" uid="uid://ctbmg1j1f5x24" path="res://Assets/Sprites/Arrosoir.png" id="3_x14vu"]
+[ext_resource type="Texture2D" uid="uid://bilbn0uocmib1" path="res://Assets/Sprites/Hue.png" id="4_aidqu"]
+[ext_resource type="Texture2D" uid="uid://mdjt05mbb01o" path="res://Assets/Sprites/Seeds.png" id="5_jhe43"]
+
+[node name="FastInventory" type="Control" node_paths=PackedStringArray("equipements")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_blwcd")
+equipements = [NodePath("Control/Hand"), NodePath("Control/WaterCan"), NodePath("Control/Hue"), NodePath("Control/Seeds")]
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 72.0
+offset_top = 568.0
+offset_right = 72.0
+offset_bottom = 568.0
+
+[node name="Hand" type="Sprite2D" parent="Control"]
+scale = Vector2(5, 5)
+texture = ExtResource("1_ggjm8")
+
+[node name="WaterCan" type="Sprite2D" parent="Control"]
+scale = Vector2(5, 5)
+texture = ExtResource("3_x14vu")
+
+[node name="Hue" type="Sprite2D" parent="Control"]
+scale = Vector2(5, 5)
+texture = ExtResource("4_aidqu")
+
+[node name="Seeds" type="Sprite2D" parent="Control"]
+scale = Vector2(5, 5)
+texture = ExtResource("5_jhe43")
