@@ -79,20 +79,24 @@ public partial class MapManager : Node2D
 		{
 			highlightScene = !highlightScene;
 		}
-		if(Input.IsActionJustPressed("PlantAndHarvest"))
+		if(Input.IsActionJustPressed("UseEquipement"))
 		{
-			// Do something only on the player tile
-			Plant(playerPosition);
-			Harvest(playerPosition);
-		}
-		if(Input.IsActionJustPressed("UseHue"))
-		{
-			// Do something only on the player tile
-			UseHue(playerPosition);
-		}
-		if(Input.IsActionJustPressed("WaterSoil"))
-		{
-			WaterSoil(playerPosition);
+			if(Global.Instance.itemEquipedName == "Hand")
+			{
+				Harvest(playerPosition);
+			}
+			else if(Global.Instance.itemEquipedName == "WaterCan")
+			{
+				WaterSoil(playerPosition);
+			}
+			else if(Global.Instance.itemEquipedName == "Hue")
+			{
+				UseHue(playerPosition);
+			}
+			else if(Global.Instance.itemEquipedName == "Seeds")
+			{
+				Plant(playerPosition);
+			}
 		}
 	}
 

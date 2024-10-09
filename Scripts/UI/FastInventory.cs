@@ -30,6 +30,7 @@ public partial class FastInventory : Control
 			if(i == itemIndex)
 			{
 				equipements[i].Visible = true;
+				Global.Instance.itemEquipedName = equipements[i].Name;
 			}
 			else
 			{

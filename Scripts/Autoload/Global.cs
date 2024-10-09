@@ -8,6 +8,7 @@ public partial class Global : Node
 
 	// Player vars
 	public int itemEquipedIndex;
+	public string itemEquipedName;
 
 	// Ressources vars
 	public int plantSelected = 1; // 1 for carrot, 2 for lettuce
