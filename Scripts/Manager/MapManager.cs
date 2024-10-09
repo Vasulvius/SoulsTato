@@ -22,6 +22,7 @@ public partial class MapManager : Node2D
 	// Tile map management vars
 	private TileMapLayer groundLayer;
 	private TileMapLayer terraformableLayer;
+	private TileMapLayer wateredLayer;
 	private TileMapLayer cultureLayer;
 	private TileMapLayer highlightLayer;
 	private const string CAN_PLACE_SEEDS_PROP_NAME = "canPlaceSeeds";
@@ -35,17 +36,20 @@ public partial class MapManager : Node2D
 	private Vector2I HIGHTLIGHT_TILE = new Vector2I(11, 0);
 
 	// Growth vars
-	private const float GROWTH_TIME = 3f;
+	// private const float GROWTH_TIME = 3f;
 	private Vector2I SEED_TILE = new Vector2I(11, 1);
+	private Vector2I WATERER_SOIL_TILE = new Vector2I(0, 1);
 
 	public override void _Ready()
 	{
 		// Create this as a singleton
 		Instance = this;
-		// Go search for the layer to terraform
+		// Go search for the ground layer
 		groundLayer = (TileMapLayer)GetTree().GetNodesInGroup("Background")[0];
 		// Go search for the layer to terraform
 		terraformableLayer = (TileMapLayer)GetTree().GetNodesInGroup("Terraformable")[0];
+		// Go search for the watered layer
+		wateredLayer = (TileMapLayer)GetTree().GetNodesInGroup("Watered")[0];
 		// Go search for the layer to plant seeds
 		cultureLayer = (TileMapLayer)GetTree().GetNodesInGroup("Culture")[0];
 		// Go search for the layer to disply highlighting
@@ -61,9 +65,11 @@ public partial class MapManager : Node2D
 
 	public override void _Process(double delta)
 	{
+		// Player position with the height offset
 		Vector2 globalPlayerPosOffset = new Vector2(player.GlobalPosition.X, player.GlobalPosition.Y + player.playerHeight*OFFSET_HEIGHT_FACTOR);
+		// Player position with the offset in tile map coordinate
 		playerPosition = groundLayer.LocalToMap(globalPlayerPosOffset);
-		tilePosition = LookedTilePostion(playerPosition);
+		// tilePosition = LookedTilePostion(playerPosition);
 		HighLight();
 	}
 
@@ -83,6 +89,10 @@ public partial class MapManager : Node2D
 		{
 			// Do something only on the player tile
 			UseHue(playerPosition);
+		}
+		if(Input.IsActionJustPressed("WaterSoil"))
+		{
+			WaterSoil(playerPosition);
 		}
 	}
 
@@ -111,11 +121,17 @@ public partial class MapManager : Node2D
 		{
 			// Just do nothing
 		}
+		else if(wateredLayer.GetCellAtlasCoords(tilePosition) == WATERER_SOIL_TILE)
+		{
+			// The soil is watered then the plant can grow
+			Vector2I newAtlas = new Vector2I(atlasCoord.X+1, atlasCoord.Y);
+			UnWaterSoil(tilePosition);
+			HandleSeed(tilePosition, level+1, newAtlas, finalSeedLevel);
+		}
 		else
 		{
-			// Make plant growth
-			Vector2I newAtlas = new Vector2I(atlasCoord.X+1, atlasCoord.Y);
-			HandleSeed(tilePosition, level+1, newAtlas, finalSeedLevel);
+			// The soil is not watered so the plan cannot grow
+			HandleSeed(tilePosition, level+1, atlasCoord, finalSeedLevel);
 		
 		}
 
@@ -141,6 +157,38 @@ public partial class MapManager : Node2D
 			lookedPosition = new Vector2I(playerPosition.X + 1, playerPosition.Y);
 		}
 		return lookedPosition;
+	}
+
+	private void WaterSoil(Vector2I tilePosition)
+	{
+		bool canWater = false;
+
+		/*
+		First check if I can water the soil
+		*/
+
+		// Get the tile data of the terraformable layer
+		TileData terraformableTileData = terraformableLayer.GetCellTileData(tilePosition);
+
+		if(terraformableTileData != null)
+		{
+			// Look for if I can water if I can place seed
+			canWater = (bool)terraformableTileData.GetCustomData(CAN_PLACE_SEEDS_PROP_NAME);
+		}
+
+		/*
+		Water if I can
+		*/
+
+		if(canWater)
+		{
+			wateredLayer.SetCell(tilePosition, SOURCE_ID, WATERER_SOIL_TILE);
+		}
+	}
+
+	private void UnWaterSoil(Vector2I tilePosition)
+	{
+		wateredLayer.SetCell(tilePosition, SOURCE_ID, EMPTY_TILE);
 	}
 
 	private bool Plant(Vector2I tilePosition)
