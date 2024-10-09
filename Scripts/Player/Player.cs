@@ -34,6 +34,8 @@ public partial class Player : CharacterBody2D
 
 	private void ManageMovingAnimation(Vector2 direction)
 	{
+		// Force direction to be (0, 1), (0, -1), (1, 0) or (-0, 1)
+		direction = new Vector2(Mathf.Round(direction.X), Mathf.Round(direction.Y));
 		if (direction == new Vector2(0, 1))
 		{
 			// down

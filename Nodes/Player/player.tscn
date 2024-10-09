@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_kwein"]
 [ext_resource type="Texture2D" uid="uid://q7fykkra0ko8" path="res://Assets/Tiles/farmingTilesheetComplete.png" id="1_v7xvf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bhc43"]
-atlas = ExtResource("1_v7xvf")
-region = Rect2(0, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ifm5f"]
 atlas = ExtResource("1_v7xvf")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhc43"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cybof"]
 atlas = ExtResource("1_v7xvf")
@@ -55,10 +55,10 @@ region = Rect2(80, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bhc43")
+"texture": SubResource("AtlasTexture_ifm5f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ifm5f")
+"texture": SubResource("AtlasTexture_bhc43")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cybof")
@@ -135,7 +135,9 @@ zoom = Vector2(4, 4)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_w7wl3")
-animation = &"idle_up"
+animation = &"down_walk"
+frame = 1
+frame_progress = 0.798792
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_8u3us")
