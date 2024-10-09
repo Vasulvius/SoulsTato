@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://blxix5l3laetq"]
+
+[ext_resource type="Script" path="res://Scripts/Autoload/TimeCycleManager.cs" id="1_ojnbk"]
+
+[node name="TimeCycleManager" type="Node2D" node_paths=PackedStringArray("dayTimer", "nightTimer", "nightCanvas")]
+script = ExtResource("1_ojnbk")
+dayTimer = NodePath("DayDuration")
+nightTimer = NodePath("NightDuration")
+nightCanvas = NodePath("NightCanvas")
+
+[node name="DayDuration" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="NightDuration" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="NightCanvas" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="NightCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.313726)
