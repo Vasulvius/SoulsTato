@@ -121,6 +121,7 @@ public partial class MapManager : Node2D
 		// await ToSignal(GetTree().CreateTimer(GROWTH_TIME), "timeout");
 		await ToSignal(TimeCycleManager.Instance.nightTimer, "timeout");
 
+
 		if(level == finalSeedLevel)
 		{
 			// Just do nothing
@@ -135,7 +136,7 @@ public partial class MapManager : Node2D
 		else
 		{
 			// The soil is not watered so the plan cannot grow
-			HandleSeed(tilePosition, level+1, atlasCoord, finalSeedLevel);
+			HandleSeed(tilePosition, level, atlasCoord, finalSeedLevel);
 		
 		}
 
