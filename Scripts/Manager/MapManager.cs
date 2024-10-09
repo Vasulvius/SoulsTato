@@ -103,9 +103,9 @@ public partial class MapManager : Node2D
 	private async void HandleSeed(Vector2I tilePosition, int level, Vector2I atlasCoord, int finalSeedLevel)
 	{
 		// Manage the growth
-
 		cultureLayer.SetCell(tilePosition, SOURCE_ID, atlasCoord);
-		await ToSignal(GetTree().CreateTimer(GROWTH_TIME), "timeout");
+		// await ToSignal(GetTree().CreateTimer(GROWTH_TIME), "timeout");
+		await ToSignal(TimeCycleManager.Instance.nightTimer, "timeout");
 
 		if(level == finalSeedLevel)
 		{
@@ -113,8 +113,10 @@ public partial class MapManager : Node2D
 		}
 		else
 		{
+			// Make plant growth
 			Vector2I newAtlas = new Vector2I(atlasCoord.X+1, atlasCoord.Y);
 			HandleSeed(tilePosition, level+1, newAtlas, finalSeedLevel);
+		
 		}
 
 	}

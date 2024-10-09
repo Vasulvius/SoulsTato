@@ -7,8 +7,8 @@ public partial class TimeCycleManager : Node2D
 	public static TimeCycleManager Instance { get; private set; }
 
 	// Time vars
-	[Export] private Timer dayTimer;
-	[Export] private Timer nightTimer;
+	[Export] public Timer dayTimer {get; private set;}
+	[Export] public Timer nightTimer {get; private set;}
 
 	// Display vars
 	[Export] private CanvasLayer nightCanvas;
