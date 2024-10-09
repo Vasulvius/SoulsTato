@@ -9,6 +9,8 @@ public partial class MapManager : Node2D
 
 	// Player vars
 	private Player player;
+	private Vector2I playerPosition;
+	private Vector2I tilePosition;
 
 	// Global states
 	private bool canPlaceSeed = false;
@@ -58,6 +60,10 @@ public partial class MapManager : Node2D
 
 	public override void _Process(double delta)
 	{
+		Vector2 globalPlayerPosOffset = new Vector2(player.GlobalPosition.X, player.GlobalPosition.Y + player.playerHeight*0.3f);
+		// playerPosition = groundLayer.LocalToMap(player.GlobalPosition);
+		playerPosition = groundLayer.LocalToMap(globalPlayerPosOffset);
+		tilePosition = LookedTilePostion(playerPosition);
 		HighLight();
 	}
 
@@ -65,8 +71,8 @@ public partial class MapManager : Node2D
 	{
 		// Get mouse position in tile map local coordonate
 		// Vector2I tilePosition = terraformableLayer.LocalToMap(GetGlobalMousePosition());
-		Vector2I playerPosition = groundLayer.LocalToMap(player.GlobalPosition);
-		Vector2I tilePosition = LookedTilePostion(playerPosition);
+		// Vector2I playerPosition = groundLayer.LocalToMap(player.GlobalPosition);
+		// Vector2I tilePosition = LookedTilePostion(playerPosition);
 
 		if(Input.IsActionJustPressed("Select"))
 		{
@@ -74,26 +80,34 @@ public partial class MapManager : Node2D
 		}
 		if(Input.IsActionJustPressed("PlantAndHarvest"))
 		{
-			bool plantedOnPlayer = Plant(playerPosition);
-			bool plantedBesidePlayer = false;
-			if(!plantedOnPlayer)
-			{
-				plantedBesidePlayer = Plant(tilePosition);
-			}
+			// // Do something on the player tile or the one that you look at
+			// bool plantedOnPlayer = Plant(playerPosition);
+			// bool plantedBesidePlayer = false;
+			// if(!plantedOnPlayer)
+			// {
+			// 	plantedBesidePlayer = Plant(tilePosition);
+			// }
+			// bool harvestOnPlayer = Harvest(playerPosition);
+			// if(!harvestOnPlayer && !plantedOnPlayer && !plantedBesidePlayer)
+			// {
+			// 	Harvest(tilePosition);
+			// }
 
-			bool harvestOnPlayer = Harvest(playerPosition);
-			if(!harvestOnPlayer && !plantedOnPlayer && !plantedBesidePlayer)
-			{
-				Harvest(tilePosition);
-			}
+			// Do something only on the player tile
+			Plant(playerPosition);
+			Harvest(playerPosition);
 		}
 		if(Input.IsActionJustPressed("UseHue"))
 		{
-			bool hueOnPlayer = UseHue(playerPosition);
-			if(!hueOnPlayer)
-			{
-				UseHue(tilePosition);
-			}
+			// // Do something on the player tile or the one that you look at
+			// bool hueOnPlayer = UseHue(playerPosition);
+			// if(!hueOnPlayer)
+			// {
+			// 	UseHue(tilePosition);
+			// }
+
+			// Do something only on the player tile
+			UseHue(playerPosition);
 		}
 	}
 
@@ -101,11 +115,11 @@ public partial class MapManager : Node2D
 	{
 		if(highlightScene)
 		{
-		Vector2I playerPosition = groundLayer.LocalToMap(player.GlobalPosition);
-		Vector2I tilePosition = LookedTilePostion(playerPosition);
+		// Vector2I playerPosition = groundLayer.LocalToMap(player.GlobalPosition);
+		// Vector2I tilePosition = LookedTilePostion(playerPosition);
 		highlightLayer.Clear();
 		highlightLayer.SetCell(playerPosition, SOURCE_ID, HIGHTLIGHT_TILE);
-		highlightLayer.SetCell(tilePosition, SOURCE_ID, HIGHTLIGHT_TILE);
+		// highlightLayer.SetCell(tilePosition, SOURCE_ID, HIGHTLIGHT_TILE);
 		}
 		else
 		{

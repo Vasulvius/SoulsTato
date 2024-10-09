@@ -5,6 +5,7 @@ public partial class Player : CharacterBody2D
 {
 	[Export] private float speed = 100.0f;
 	[Export] private AnimatedSprite2D animatedSprite2D;
+	[Export] public int playerHeight = 16; // Height of the player sprite in pixel
 	public enum lookingDirection {Up, Down, Left, Right};
 	public lookingDirection actualLookingDirection = lookingDirection.Down;
 
