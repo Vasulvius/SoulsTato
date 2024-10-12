@@ -16,7 +16,7 @@ public partial class Inventory : Node
 	{
 		// Create this as a singleton
 		Instance = this;
-		DisplayMe();
+		// DisplayMe();
 	}
 
 	public void AddItem(Object item)
