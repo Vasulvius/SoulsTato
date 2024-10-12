@@ -54,17 +54,11 @@ public partial class MapManager : Node2D
 		cultureLayer = (TileMapLayer)GetTree().GetNodesInGroup("Culture")[0];
 		// Go search for the layer to disply highlighting
 		highlightLayer = (TileMapLayer)GetTree().GetNodesInGroup("HighLight")[0];
-		// Go search for the player
-		var playerArray = GetTree().GetNodesInGroup("Player");
-		if(playerArray.Count() > 0)
-		{
-			// There is scene with no players eg. Main Menu scene
-			player = (Player)playerArray[0];
-		}
 	}
 
 	public override void _Process(double delta)
 	{
+		player = Player.Instance;
 		// Player position with the height offset
 		Vector2 globalPlayerPosOffset = new Vector2(player.GlobalPosition.X, player.GlobalPosition.Y + player.playerHeight*OFFSET_HEIGHT_FACTOR);
 		// Player position with the offset in tile map coordinate
