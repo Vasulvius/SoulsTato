@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://Scripts/Autoload/Global.cs"
 TimeCycleManager="*res://Nodes/Autoloads/TimeCycleManager.tscn"
+ObjectDataBase="*res://Nodes/Autoloads/ObjectDataBase.tscn"
 
 [dotnet]
 
