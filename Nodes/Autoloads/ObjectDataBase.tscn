@@ -1,3 +1,7 @@
-[gd_scene format=3 uid="uid://c7qhgd8li4ytf"]
+[gd_scene load_steps=2 format=3 uid="uid://c7qhgd8li4ytf"]
 
-[node name="ObjectDataBase" type="Node"]
+[ext_resource type="Script" path="res://Scripts/Autoload/ObjectDataBase.cs" id="1_l0n6u"]
+
+[node name="ObjectDataBase" type="Node" node_paths=PackedStringArray("objects")]
+script = ExtResource("1_l0n6u")
+objects = []
