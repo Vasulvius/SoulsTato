@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2vxv3lo6aa6u"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/RedPotatoe.cs" id="1_2dr08"]
+[ext_resource type="Texture2D" uid="uid://ctbmg1j1f5x24" path="res://Assets/Sprites/Arrosoir.png" id="2_x8jnq"]
+
+[node name="RedPotatoe" type="Node2D"]
+script = ExtResource("1_2dr08")
+texture = ExtResource("2_x8jnq")
