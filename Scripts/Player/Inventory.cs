@@ -16,7 +16,7 @@ public partial class Inventory : Node
 	{
 		// Create this as a singleton
 		Instance = this;
-		// DisplayMe();
+		DisplayMe();
 	}
 
 	public void AddItem(Object item)
@@ -26,7 +26,7 @@ public partial class Inventory : Node
 
 	private async void DisplayMe()
 	{
-		await ToSignal(GetTree().CreateTimer(5), "timeout");
+		await ToSignal(GetTree().CreateTimer(1), "timeout");
 		GD.Print(brutInventory);
 		DisplayMe();
 	} 
