@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://hq8pdflwp5tq"]
+[gd_scene load_steps=19 format=3 uid="uid://hq8pdflwp5tq"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_kwein"]
 [ext_resource type="Texture2D" uid="uid://q7fykkra0ko8" path="res://Assets/Tiles/farmingTilesheetComplete.png" id="1_v7xvf"]
 [ext_resource type="PackedScene" uid="uid://deismtgkqnkt1" path="res://Nodes/UI/UI.tscn" id="2_l4lsj"]
+[ext_resource type="PackedScene" uid="uid://b4h6jl0vh4l53" path="res://Nodes/Player/Inventory.tscn" id="4_ojsow"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ifm5f"]
 atlas = ExtResource("1_v7xvf")
@@ -144,3 +145,5 @@ frame_progress = 0.798792
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_8u3us")
+
+[node name="Inventory" parent="." instance=ExtResource("4_ojsow")]

@@ -1,8 +1,68 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2vxv3lo6aa6u"]
+[gd_scene load_steps=8 format=3 uid="uid://d2vxv3lo6aa6u"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/RedPotatoe.cs" id="1_2dr08"]
 [ext_resource type="Texture2D" uid="uid://ctbmg1j1f5x24" path="res://Assets/Sprites/Arrosoir.png" id="2_x8jnq"]
+[ext_resource type="Texture2D" uid="uid://c28m05moqs3vl" path="res://Assets/Sprites/Potatoe.png" id="3_yldud"]
+
+[sub_resource type="Animation" id="Animation_unalm"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dg2sh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6xmk5"]
+_data = {
+"Idle": SubResource("Animation_unalm"),
+"RESET": SubResource("Animation_dg2sh")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_18x1d"]
+radius = 2.23607
 
 [node name="RedPotatoe" type="Node2D"]
 script = ExtResource("1_2dr08")
 texture = ExtResource("2_x8jnq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6xmk5")
+}
+autoplay = "Idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_yldud")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
+shape = SubResource("CircleShape2D_18x1d")
+
+[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="BodyEntered"]

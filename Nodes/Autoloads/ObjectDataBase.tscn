@@ -2,6 +2,5 @@
 
 [ext_resource type="Script" path="res://Scripts/Autoload/ObjectDataBase.cs" id="1_l0n6u"]
 
-[node name="ObjectDataBase" type="Node" node_paths=PackedStringArray("objects")]
+[node name="ObjectDataBase" type="Node"]
 script = ExtResource("1_l0n6u")
-objects = []

@@ -3,29 +3,26 @@ using System;
 
 public partial class RedPotatoe : Object
 {
-	public override bool stackable
+	public override string path
 	{
-		get { return true; }
-	}
-
-    public override int stackSize
-	{
-		get { return 10; }
-	}
-
-    [Export]public override Texture2D texture
-	{
-		get { return _texture; }
-		set { _texture = value; }
+		get { return "res://Nodes/Objects/RedPotatoe.tscn"; }
 	}
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
 	{
-		GD.Print(texture.ResourcePath);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+	}
+
+	private void BodyEntered(Node2D body)
+	{
+		if(body == Player.Instance)
+		{
+			Inventory.Instance.AddItem(this);
+			QueueFree();
+		}
 	}
 }

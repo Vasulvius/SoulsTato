@@ -8,7 +8,7 @@ public partial class Inventory : Node
 	public static Inventory Instance { get; private set; }
 
 	// Data vars
-	[Export] private Godot.Collections.Array<Node2D> brutInventory;
+	private Godot.Collections.Array<string> brutInventory = new Godot.Collections.Array<string>();
 	// [Export] private Node2D[] brutInventory = {};
 
 	// Called when the node enters the scene tree for the first time.
@@ -16,10 +16,18 @@ public partial class Inventory : Node
 	{
 		// Create this as a singleton
 		Instance = this;
+		// DisplayMe();
 	}
 
-	public void AddItem(Node2D item)
+	public void AddItem(Object item)
 	{
-		brutInventory.Add(item);
+		brutInventory.Add(ObjectDataBase.Instance.FromItemPathGiveID(item.path));
 	}
+
+	private async void DisplayMe()
+	{
+		await ToSignal(GetTree().CreateTimer(5), "timeout");
+		GD.Print(brutInventory);
+		DisplayMe();
+	} 
 }
