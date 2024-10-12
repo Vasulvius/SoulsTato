@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Linq;
 
 public partial class Inventory : Node
 {
@@ -7,7 +8,8 @@ public partial class Inventory : Node
 	public static Inventory Instance { get; private set; }
 
 	// Data vars
-	private Node2D[] brutInventory;
+	[Export] private Godot.Collections.Array<Node2D> brutInventory;
+	// [Export] private Node2D[] brutInventory = {};
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -16,8 +18,8 @@ public partial class Inventory : Node
 		Instance = this;
 	}
 
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public void AddItem(Node2D item)
 	{
+		brutInventory.Add(item);
 	}
 }
