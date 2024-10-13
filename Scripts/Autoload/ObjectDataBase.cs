@@ -9,7 +9,7 @@ public partial class ObjectDataBase : Node
 	public static ObjectDataBase Instance { get; private set; }
 
 	// Data vars
-	public Dictionary<string, Dictionary> items {get; private set;}
+	private Dictionary<string, Dictionary> items;
 	public Dictionary<string, string> itemsID {get; private set;}
 	private const string ITEMS_JSON_PATH = "res://Data/Items.json";
 
@@ -49,5 +49,10 @@ public partial class ObjectDataBase : Node
 		// From the path of the item give the corresponding ID
 		var temp = itemsID.ToDictionary(x => x.Value, x => x.Key);
 		return temp[path];
+	}
+
+	public int GetStackSize(string ID)
+	{
+		return (int)items[ID]["stacksize"];
 	}
 }
