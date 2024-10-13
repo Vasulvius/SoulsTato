@@ -1,7 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://deismtgkqnkt1"]
+[gd_scene load_steps=3 format=3 uid="uid://deismtgkqnkt1"]
 
 [ext_resource type="PackedScene" uid="uid://h1bsynvm7dw5" path="res://Nodes/UI/FastInventory.tscn" id="1_xrtn5"]
+[ext_resource type="PackedScene" uid="uid://cgf26x1f7itkm" path="res://Nodes/Player/InventoryView.tscn" id="2_kxc2t"]
 
 [node name="UI" type="CanvasLayer"]
 
 [node name="FastInventory" parent="." instance=ExtResource("1_xrtn5")]
+
+[node name="InventoryView" parent="." instance=ExtResource("2_kxc2t")]
