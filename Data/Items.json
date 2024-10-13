@@ -1,4 +1,12 @@
 {
-	"0": "res://Nodes/Objects/RedPotatoe.tscn",
-	"1": "res://Nodes/Objects/BluePotatoe.tscn"
+	"0": {
+		"path" : "res://Nodes/Objects/RedPotatoe.tscn",
+		"stacksize" : 1,
+		"icon" : ""
+	},
+	"1": {
+		"path" : "res://Nodes/Objects/BluePotatoe.tscn",
+		"stacksize" : 1,
+		"icon" : ""
+	}
 }
