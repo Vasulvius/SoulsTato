@@ -1,7 +1,7 @@
 {
 	"0": {
 		"path" : "res://Nodes/Objects/RedPotatoe.tscn",
-		"stacksize" : 1,
+		"stacksize" : 2,
 		"icon" : ""
 	},
 	"1": {

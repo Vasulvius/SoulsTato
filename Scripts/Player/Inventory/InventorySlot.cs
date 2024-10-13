@@ -6,13 +6,6 @@ public partial class InventorySlot : Node
 {
 	public string itemID { get; private set; }
 	public int qty { get; private set; }
-
-	// Constructor
-	// public InventorySlot(string _itemID, int _qty)
-	// {
-	// 	itemID = _itemID;
-	// 	qty = _qty;
-	// }
 	
 	// Methods
 	public void AddItem(string _itemID, int _qty = 1)

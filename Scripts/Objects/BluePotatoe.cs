@@ -16,13 +16,4 @@ public partial class BluePotatoe : Object
 	public override void _Process(double delta)
 	{
 	}
-
-	private void BodyEntered(Node2D body)
-	{
-		if(body == Player.Instance)
-		{
-			Inventory.Instance.AddItem(this);
-			QueueFree();
-		}
-	}
 }

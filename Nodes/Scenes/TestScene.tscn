@@ -36,5 +36,11 @@ tile_set = ExtResource("2_01u2e")
 [node name="RedPotatoe" parent="." instance=ExtResource("4_ic4ul")]
 position = Vector2(-40, -8)
 
+[node name="RedPotatoe2" parent="." instance=ExtResource("4_ic4ul")]
+position = Vector2(-80, -6)
+
+[node name="RedPotatoe3" parent="." instance=ExtResource("4_ic4ul")]
+position = Vector2(-64, 16)
+
 [node name="BluePotatoe" parent="." instance=ExtResource("5_iodan")]
 position = Vector2(-64, -32)
