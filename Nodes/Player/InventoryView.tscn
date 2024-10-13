@@ -1,15 +1,132 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgf26x1f7itkm"]
+[gd_scene load_steps=3 format=3 uid="uid://cgf26x1f7itkm"]
 
+[ext_resource type="Script" path="res://Scripts/Player/Inventory/InventoryView.cs" id="1_h4cfg"]
 [ext_resource type="Texture2D" uid="uid://b0n0e4flo371g" path="res://Assets/Sprites/Inventroy.png" id="1_hv7la"]
 
-[node name="InventoryView" type="Control"]
+[node name="InventoryView" type="Control" node_paths=PackedStringArray("slots", "labels")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_h4cfg")
+slots = [NodePath("TextureRect/MarginContainer/SlotsGridContainer/Slot0"), NodePath("TextureRect/MarginContainer/SlotsGridContainer/Slot1"), NodePath("TextureRect/MarginContainer/SlotsGridContainer/Slot2"), NodePath("TextureRect/MarginContainer/SlotsGridContainer/Slot3"), NodePath("TextureRect/MarginContainer/SlotsGridContainer/Slot4"), NodePath("TextureRect/MarginContainer/SlotsGridContainer/Slot5"), NodePath("TextureRect/MarginContainer/SlotsGridContainer/Slot6"), NodePath("TextureRect/MarginContainer/SlotsGridContainer/Slot7"), NodePath("TextureRect/MarginContainer/SlotsGridContainer/Slot8"), NodePath("TextureRect/MarginContainer/SlotsGridContainer/Slot9")]
+labels = [NodePath("TextureRect/MarginContainer2/QtyGridContainer/Label"), NodePath("TextureRect/MarginContainer2/QtyGridContainer/Label2"), NodePath("TextureRect/MarginContainer2/QtyGridContainer/Label3"), NodePath("TextureRect/MarginContainer2/QtyGridContainer/Label4"), NodePath("TextureRect/MarginContainer2/QtyGridContainer/Label5"), NodePath("TextureRect/MarginContainer2/QtyGridContainer/Label6"), NodePath("TextureRect/MarginContainer2/QtyGridContainer/Label7"), NodePath("TextureRect/MarginContainer2/QtyGridContainer/Label8"), NodePath("TextureRect/MarginContainer2/QtyGridContainer/Label9"), NodePath("TextureRect/MarginContainer2/QtyGridContainer/Label10")]
 
-[node name="Inventroy" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -231.0
+offset_top = -92.0
+offset_right = 231.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_hv7la")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 2
+
+[node name="SlotsGridContainer" type="GridContainer" parent="TextureRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 17
+theme_override_constants/v_separation = 17
+columns = 5
+
+[node name="Slot0" type="TextureRect" parent="TextureRect/MarginContainer/SlotsGridContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="Slot1" type="TextureRect" parent="TextureRect/MarginContainer/SlotsGridContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="Slot2" type="TextureRect" parent="TextureRect/MarginContainer/SlotsGridContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="Slot3" type="TextureRect" parent="TextureRect/MarginContainer/SlotsGridContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="Slot4" type="TextureRect" parent="TextureRect/MarginContainer/SlotsGridContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="Slot5" type="TextureRect" parent="TextureRect/MarginContainer/SlotsGridContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="Slot6" type="TextureRect" parent="TextureRect/MarginContainer/SlotsGridContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="Slot7" type="TextureRect" parent="TextureRect/MarginContainer/SlotsGridContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="Slot8" type="TextureRect" parent="TextureRect/MarginContainer/SlotsGridContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="Slot9" type="TextureRect" parent="TextureRect/MarginContainer/SlotsGridContainer"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 59
+theme_override_constants/margin_top = 50
+
+[node name="QtyGridContainer" type="GridContainer" parent="TextureRect/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/h_separation = 72
+theme_override_constants/v_separation = 72
+columns = 5
+
+[node name="Label" type="Label" parent="TextureRect/MarginContainer2/QtyGridContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="TextureRect/MarginContainer2/QtyGridContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="TextureRect/MarginContainer2/QtyGridContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="TextureRect/MarginContainer2/QtyGridContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="TextureRect/MarginContainer2/QtyGridContainer"]
+layout_mode = 2
+
+[node name="Label6" type="Label" parent="TextureRect/MarginContainer2/QtyGridContainer"]
+layout_mode = 2
+
+[node name="Label7" type="Label" parent="TextureRect/MarginContainer2/QtyGridContainer"]
+layout_mode = 2
+
+[node name="Label8" type="Label" parent="TextureRect/MarginContainer2/QtyGridContainer"]
+layout_mode = 2
+
+[node name="Label9" type="Label" parent="TextureRect/MarginContainer2/QtyGridContainer"]
+layout_mode = 2
+
+[node name="Label10" type="Label" parent="TextureRect/MarginContainer2/QtyGridContainer"]
+layout_mode = 2

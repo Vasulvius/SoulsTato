@@ -9,6 +9,7 @@ public partial class ObjectDataBase : Node
 	public static ObjectDataBase Instance { get; private set; }
 
 	// Data vars
+	[Export] private Godot.Collections.Array<Texture2D> textures;
 	private Dictionary<string, Dictionary> items;
 	public Dictionary<string, string> itemsID {get; private set;}
 	private const string ITEMS_JSON_PATH = "res://Data/Items.json";
@@ -54,5 +55,21 @@ public partial class ObjectDataBase : Node
 	public int GetStackSize(string ID)
 	{
 		return (int)items[ID]["stacksize"];
+	}
+
+	public string GetIconPath(string ID)
+	{
+		return (string)items[ID]["icon"];
+	}
+
+	public Texture2D GetIcon(string ID)
+	{
+		string iconPath = (string)items[ID]["icon"];
+		foreach(Texture2D texture in textures)
+		{
+			if(texture.ResourcePath == iconPath){ return texture; }
+		}
+
+		return null;
 	}
 }

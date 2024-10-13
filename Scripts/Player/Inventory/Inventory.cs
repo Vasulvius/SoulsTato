@@ -8,7 +8,7 @@ public partial class Inventory : Node
 	public static Inventory Instance { get; private set; }
 
 	// Data vars
-	private const int SLOT_NUMBER = 1;
+	private const int SLOT_NUMBER = 10;
 	// private Godot.Collections.Array<string> brutInventory = new Godot.Collections.Array<string>();
 	private Godot.Collections.Array<InventorySlot> slots = new Godot.Collections.Array<InventorySlot>();
 
@@ -33,13 +33,18 @@ public partial class Inventory : Node
 		int stackSize = ObjectDataBase.Instance.GetStackSize(ID);
 		bool puttedInSlots = false;
 
-		foreach(InventorySlot slot in slots)
+		for(int k = 0; k < slots.Count; k++)
 		{
+			InventorySlot slot = slots[k];
 			if((slot.itemID == ID || slot.itemID == null) && slot.qty < stackSize)
 			{
 				// Put item then quit for loop
 				slot.AddItem(ID);
 				puttedInSlots = true;
+				Texture2D icon = ObjectDataBase.Instance.GetIcon(ID);
+				if(icon == null){ throw new ArgumentException("No icon found in ObjectDataBase");}
+				InventoryView.Instance.ChangeSlotTexture(k, icon);
+				InventoryView.Instance.ChangeLabel(k, IntToString(slot.qty));
 				break;
 			}
 		}
@@ -49,6 +54,19 @@ public partial class Inventory : Node
 		return puttedInSlots;
 	}
 
+	// Utils
+
+	private string IntToString(int num)
+	{
+		if(num < 10)
+		{
+			return "0"+num;
+		}
+		else
+		{
+			return num.ToString();
+		}
+	}
 	private void PrintSlots()
 	{
 		int k = 0;
