@@ -48,9 +48,6 @@ public partial class Inventory : Node
 				break;
 			}
 		}
-
-		PrintSlots();
-
 		return puttedInSlots;
 	}
 
