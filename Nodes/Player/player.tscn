@@ -1,0 +1,149 @@
+[gd_scene load_steps=19 format=3 uid="uid://hq8pdflwp5tq"]
+
+[ext_resource type="Script" path="res://Scripts/Player/Player.cs" id="1_kwein"]
+[ext_resource type="Texture2D" uid="uid://q7fykkra0ko8" path="res://Assets/Tiles/farmingTilesheetComplete.png" id="1_v7xvf"]
+[ext_resource type="PackedScene" uid="uid://deismtgkqnkt1" path="res://Nodes/UI/UI.tscn" id="2_l4lsj"]
+[ext_resource type="PackedScene" uid="uid://b4h6jl0vh4l53" path="res://Nodes/Player/Inventory.tscn" id="4_ojsow"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifm5f"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bhc43"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cybof"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pao6k"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr1h7"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5384"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0u0b"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8fru"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7xgq"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sw7s"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3elas"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15br7"]
+atlas = ExtResource("1_v7xvf")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w7wl3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifm5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bhc43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cybof")
+}],
+"loop": true,
+"name": &"down_walk",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pao6k")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr1h7")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5384")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0u0b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8fru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7xgq")
+}],
+"loop": true,
+"name": &"side_walk",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sw7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3elas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15br7")
+}],
+"loop": true,
+"name": &"up_walk",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8u3us"]
+radius = 5.0
+height = 14.0
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("animatedSprite2D") groups=["Player"]]
+z_index = 5
+position = Vector2(0, -6)
+script = ExtResource("1_kwein")
+animatedSprite2D = NodePath("AnimatedSprite2D")
+
+[node name="UI" parent="." instance=ExtResource("2_l4lsj")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w7wl3")
+animation = &"down_walk"
+frame = 1
+frame_progress = 0.798792
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8u3us")
+
+[node name="Inventory" parent="." instance=ExtResource("4_ojsow")]

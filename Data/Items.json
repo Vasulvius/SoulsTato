@@ -1,0 +1,12 @@
+{
+	"0": {
+		"path" : "res://Nodes/Objects/RedPotatoe.tscn",
+		"stacksize" : 2,
+		"icon" : "res://Assets/Sprites/RedTatoe.png"
+	},
+	"1": {
+		"path" : "res://Nodes/Objects/BluePotatoe.tscn",
+		"stacksize" : 1,
+		"icon" : "res://Assets/Sprites/BlueTatoe.png"
+	}
+}

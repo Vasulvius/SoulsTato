@@ -1,0 +1,95 @@
+color model.png
+size:2018,1981
+filter:Linear,Linear
+pma:true
+scale:0.91
+arm back
+bounds:1040,674,253,465
+offsets:2,0,255,465
+rotate:90
+arm front
+bounds:744,732,294,560
+offsets:0,1,295,561
+bassin
+bounds:2,1349,658,630
+offsets:0,24,695,691
+buste
+bounds:2,615,525,732
+offsets:0,1,525,733
+ceinture
+bounds:1550,1551,455,428
+cuisse back
+bounds:662,1640,339,886
+offsets:0,1,339,888
+rotate:90
+cuisse front
+bounds:662,1294,344,832
+offsets:0,1,345,834
+rotate:90
+eyebrows
+bounds:1719,156,266,113
+offsets:0,1,266,114
+eyes
+bounds:1719,271,259,155
+offsets:0,0,259,156
+foot back
+bounds:1507,744,331,296
+forearm back
+bounds:702,89,196,529
+offsets:0,1,197,531
+forearm front
+bounds:1280,150,202,522
+offsets:0,1,202,524
+hand back
+bounds:1484,195,233,263
+hand front
+bounds:1507,460,282,296
+offsets:1,0,284,296
+rotate:90
+minimèche
+bounds:1841,40,125,114
+offsets:0,1,126,116
+mollet back
+bounds:1496,1356,193,520
+offsets:1,1,195,523
+rotate:90
+mollet front idle
+bounds:529,620,213,672
+mollet front walk
+bounds:500,52,200,561
+mèche back
+bounds:1840,1024,127,330
+offsets:0,0,127,331
+mèche front
+bounds:1840,692,127,330
+offsets:0,0,127,331
+nose and mouth
+bounds:744,627,103,116
+offsets:1,0,104,116
+rotate:90
+oreille back
+bounds:1513,21,150,172
+offsets:0,0,150,173
+oreille front
+bounds:1805,428,262,165
+offsets:0,1,262,166
+rotate:90
+pied front idle
+bounds:900,80,210,371
+offsets:0,0,212,371
+rotate:90
+pied front walk
+bounds:1496,1042,312,342
+rotate:90
+pupils
+bounds:1665,37,174,117
+sclera
+bounds:1273,2,238,146
+touffe
+bounds:1040,929,425,363
+offsets:9,1,434,364
+ventre
+bounds:900,292,378,380
+offsets:0,1,379,381
+visage
+bounds:2,21,496,592
